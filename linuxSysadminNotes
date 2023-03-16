@@ -1,0 +1,51 @@
+#####################################################
+              TOC - TABLE OF CONTENTS
+#####################################################
+
+0) Scratchpad notes to sort
+1) SSH Commands
+2) Software and Package management
+  2.1) Dnf
+
+#####################################################
+0) SCRATCHPAD NOTES TO SORT
+#####################################################
+
+#####################################################
+1) SSH COMMANDS
+#####################################################
+
+ssh-keygen -t ed25519 -C "your_email@example.com"     ---> Newer method to create key
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+eval "$(ssh-agent -s)"                               --> Load ssh agent into memory
+ssh-add ~/.ssh/mySshKeypair.priv                     --> Add this private key into agent for use
+
+#####################################################
+2) SOFTWARE AND PACKAGE MANAGEMENT
+#####################################################
+
+=====================================================
+2.1) DNF
+=====================================================
+
+dnf list available
+dnf list installed
+dnf search package
+dnf repolist
+dnf repolist all
+
+dnf check-update  : Show me updates system is reporting as needing
+dnf info | less : Show me details of what the package is for research/review before upgrading
+dnf upgrade : Actually initiate update of packages shown from check-update cmd
+
+dnf grouplist
+dnf groupinstall ‘group_name’
+dnf groupremove ‘group_name’
+
+dnf --enablerepo=repo-name install package
+
+# DNF Commands for managing packages for gnome desktop extensions/functinoality
+dnf search gnome-shell-extension
+dnf search gnome-shell-extension | grep gsconnect
+dnf install gnome-shell-extension-gsconnect.x86_64
